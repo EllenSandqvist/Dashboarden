@@ -1,0 +1,394 @@
+::before,
+::after,
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  margin: 2em 0;
+  background: rgb(88, 136, 88);
+  min-height: 96vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+input,
+button,
+textarea {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+h1 {
+  font-size: 4rem;
+  color: #d7dcd6;
+  font-weight: 800;
+  /* Text-shadow is used to ensure visibility*/
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black,
+    2px 2px 0 black;
+}
+
+h2 {
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+
+h3 {
+  font-size: 1.3rem;
+}
+
+p {
+  font-size: 1.2rem;
+}
+
+button {
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 0.2em 0.4em;
+  border-radius: 10px;
+  border: 1px solid;
+}
+
+.container {
+  width: 98%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.row1,
+.row2 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.row1 {
+  justify-content: end;
+}
+
+.card {
+  width: 35%;
+  height: 30em;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5em 0.5em;
+  gap: 0.8em;
+}
+
+/* --- Background image section --- */
+.photo-text {
+  position: absolute;
+  bottom: 0;
+  right: 3%;
+  background-color: white;
+  padding: 0.2em;
+  font-size: 0.9rem;
+}
+
+.photo-text-hidden {
+  display: none;
+}
+
+.photo-text a {
+  color: black;
+}
+
+/* --- Date/Time section --- */
+.date {
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 0.3em 3.8em;
+  border-radius: 20px;
+}
+
+.date-span {
+  margin-right: 2em;
+}
+
+/* --- Main styling Modals (add link modal and forecast info modal--- */
+/* To make background overlay */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 30vh auto;
+  padding: 3em;
+  border: 3px solid;
+  max-width: 500px;
+  position: relative;
+}
+
+.modal-content h3 {
+  margin-bottom: 0.5em;
+}
+
+.modal-content p {
+  line-height: 1.5;
+  font-size: 1rem;
+}
+
+.close {
+  font-family: initial;
+  color: black;
+  position: absolute;
+  top: 0.2em;
+  right: 0.3em;
+  font-size: 2.8rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+}
+
+.close:hover,
+.close:focus {
+  text-decoration: none;
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+/* --- Link section --- */
+.link-container {
+  width: 100%;
+  max-height: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  overflow: auto;
+}
+
+.link-div {
+  background-color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em 1em;
+  border-radius: 10px;
+}
+
+.links {
+  text-decoration: none;
+}
+
+.link-h3 {
+  text-transform: capitalize;
+  color: black;
+}
+
+.favicon-div {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.favicon {
+  min-width: 26px;
+}
+
+.link-modal-hidden {
+  display: none;
+}
+
+.link-modal-para {
+  margin-bottom: 1em;
+}
+
+input {
+  margin-top: 0.2em;
+  margin-bottom: 0.8em;
+  padding: 0.3em;
+  font-size: 1rem;
+}
+
+#save-link-button {
+  margin-top: 2em;
+  padding: 0.5em 0.8em;
+}
+
+#save-link-button:hover {
+  border: 5px double rgb(129, 189, 129);
+}
+
+/* --- Weather section --- */
+#card_weather {
+  justify-content: space-between;
+}
+
+.weather-div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.weather-display {
+  background-color: rgba(170, 156, 178, 0.8);
+  width: 96%;
+  height: 25%;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 0.2em;
+}
+
+.weather-icon {
+  height: 85%;
+}
+
+.weather-para {
+  margin-top: 0.5em;
+  display: flex;
+  gap: 0.5em;
+}
+
+.weather-temp,
+.weather-description {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 0.3em;
+  border-radius: 5px;
+  font-size: 1.1rem;
+}
+
+.weather-description {
+  text-transform: capitalize;
+}
+
+.weather-btn-i {
+  align-self: flex-end;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.fa-circle-info {
+  position: absolute;
+  right: 1%;
+  bottom: 0;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.modal-hidden {
+  display: none;
+}
+
+/* --- Quote section --- */
+.quote-div {
+  background-color: white;
+  width: 100%;
+  height: 95%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  box-shadow: 0 0 0.8rem rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.start-quote {
+  font-size: 8rem;
+  position: absolute;
+  top: 0;
+  left: 5%;
+  color: rgba(100, 58, 122, 0.2);
+}
+
+.quote-para {
+  width: 80%;
+  margin-bottom: 10%;
+  font-family: "Dancing Script", cursive;
+  font-size: 2rem;
+}
+
+.author-para {
+  font-size: 1rem;
+  width: 88%;
+  text-align: right;
+  margin-bottom: 10%;
+  font-weight: 300;
+}
+
+.author-para::before {
+  content: "⸛";
+  vertical-align: middle;
+  font-size: 1.6rem;
+}
+
+/* --- Note Board section --- */
+#note-board {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  border: none;
+  width: 100%;
+  font-size: 1.1rem;
+  padding: 0.3em;
+}
+
+/* ----------- Media Query 1 ----------- */
+@media (max-width: 1525px) {
+  .card {
+    width: 45%;
+    gap: 0.5em;
+  }
+
+  .weather-temp,
+  .weather-description {
+    font-size: 1rem;
+  }
+
+  #note-board {
+    font-size: 1rem;
+  }
+}
+
+/* ----------- Media Query 2 ----------- */
+@media (max-width: 1070px) {
+  h1 {
+    margin-top: 1em;
+    font-size: 3rem;
+  }
+
+  section {
+    width: 80%;
+    flex-wrap: wrap;
+    margin-bottom: 1em;
+  }
+
+  .row1,
+  .row2 {
+    justify-content: center;
+  }
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Din personliga Dashboard</title>
+
+    <!-- JavaScript scripts -->
+    <script src="./js/h1-header.js" defer></script>
+    <script src="./js/notes.js" defer></script>
+    <script src="./js/daily-wisdom.js" defer></script>
+    <script src="./js/links.js" defer></script>
+    <!-- scripts of module type for use of import/export-->
+    <script type="module" src="./js/background.js" defer></script>
+    <script type="module" src="./js/date.js" defer></script>
+    <script type="module" src="./js/weather.js" defer></script>
+    
+    <link rel="stylesheet" href="./css/main.css">
+
+    <!-- Font links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abel&family=Cookie&family=Croissant+One&family=DM+Serif+Display&family=Josefin+Sans:wght@300;400;700&family=Luckiest+Guy&family=Montserrat+Alternates:wght@300;400&family=Montserrat:wght@300;400&family=Noto+Sans+KR:wght@100;900&family=Nunito:wght@300;800&family=Open+Sans:wght@300&family=Philosopher:wght@700&family=Playfair+Display:wght@500&family=Quicksand:wght@500;700&family=Raleway:wght@300;400&family=Roboto+Slab&family=Roboto:wght@100&family=Space+Mono&family=Tangerine&family=Vidaloka&family=Work+Sans:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abel&family=Cookie&family=Croissant+One&family=DM+Serif+Display&family=Dancing+Script:wght@500&family=Josefin+Sans:wght@300;400;600&family=Luckiest+Guy&family=Montserrat+Alternates:wght@300;400&family=Montserrat:wght@300;400&family=Noto+Sans+KR:wght@100;900&family=Nunito:wght@300;800&family=Open+Sans:wght@300&family=Philosopher:wght@700&family=Playfair+Display:wght@500&family=Quicksand:wght@500;700&family=Raleway:wght@300;400&family=Roboto+Slab&family=Roboto:wght@100&family=Space+Mono&family=Tangerine&family=Vidaloka&family=Work+Sans:wght@300;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="date">Här ska datum och tid visas</div>
+    <div class="container">
+        <!-- contenteditable makes the heading editable for the user -->
+        <h1 contenteditable="true">Ellen Dashboard</h1>
+        <section>
+            <!-- divided dashboard cards in two rows for a nicer wrap on small screens -->
+            <div class="row1">
+                <article class="card" id="card_links">
+                    <h2>Snabblänkar</h2>
+                    <div class="link-container"></div>
+                    <button id="add-link-button"><i class="fa-solid fa-circle-plus"></i> Lägg till länk</button>
+                </article>
+                
+                <article class="card" id="card_weather">
+                    <h2>Dagens Väder</h2>
+                    <div class="weather-div">
+                        <!-- namned ids with numbers that will correspond to index of weather array in js -->
+                        <div id="weather0" class="weather-display"></div>
+                        <div id="weather1" class="weather-display"></div>
+                        <div id="weather2" class="weather-display"></div>
+                    </div>
+                    <div class="weather-btn-i">
+                        <button id="weather-button"><i class="fa-solid fa-arrow-rotate-right"></i> Uppdatera</button>
+                        <i class="fa-solid fa-circle-info"></i>
+                    </div>
+                </article>
+            </div>
+            <div class="row2">
+                <article class="card" id="card-quote">
+                    <h2>Dagens Citat</h2>
+                    <div class="quote-div">
+                        <i class="start-quote fas fa-quote-left"></i>
+                    </div>
+                </article>
+
+                <article class="card" id="card_notes">
+                    <h2>Anteckningar</h2>
+                    <textarea name="notes" id="note-board" cols="30" rows="25" placeholder="Skriv anteckningar här..."></textarea>
+                    <button id="delete-notes"><i class="fa-regular fa-trash-can"></i> Radera</button>
+                </article>
+            </div> 
+        </section>
+    </div>
+    <button class="bg-button"><i class="fa-solid fa-arrow-rotate-right"></i> Slumpa ny bakgrund</button>
+    <p class="photo-text photo-text-hidden"></p>
+
+    <!-- Modal - info about weather forecast -->
+    <div id="forecast-info" class="modal modal-hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Info om Dagens Väder</h3>
+            <p>
+                Vädret för imorgon och nästkommande dag visar prognosen för kl. 12:00-15:00.<br>
+                Dagens väderprognos gäller de kommande 1,5-4,5 timmarna. Prognosen uppdateras automatiskt vid midnatt.
+            </p>
+        </div>
+    </div>
+
+    <!-- Modal - form for adding links -->
+    <div id="link-modal" class="modal link-modal link-modal-hidden">
+        <form class="modal-content link-modal-content">
+            <span id="link-modal-close" class="close">&times;</span>
+            <h3>Lägg till länk</h3>
+            <p class="link-modal-para">Fyll i fälten nedan. <br>Under rubrik anger du det namn du vill ge din länk. <br>Webbadressen behöver inledas med https:// alt. http://</p>
+            <label for="link-name">Rubrik:</label><br>
+            <input type="text" id="link-name" required><br>
+            <label for="link-url">Länk:</label><br>
+            <input type="url" id="link-url" placeholder="https://dinsida.se" required><br>
+            <button id="save-link-button">Spara Länk!</button>
+        </form>
+    </div>
+    
+    <!-- Script for icons -->
+    <script src="https://kit.fontawesome.com/dfb17be9bd.js" crossorigin="anonymous"></script>
+</body>
+</html>
