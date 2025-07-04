@@ -12,4 +12,4 @@ En personlig dashboard som kan användas som startsida i webbläsaren. Innehåll
 - Egna anteckningar
 - Slumpad bakgrundsbild och info om fotograf
 
-<!-- 👉 Du kan testa sidan här: [din-länk.netlify.app](https://din-länk.netlify.app) -->
+👉 Du kan testa sidan här: [https://dashboarden.netlify.app/](https://dashboarden.netlify.app/)
