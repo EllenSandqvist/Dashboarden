@@ -16,27 +16,33 @@ renderLinks();
 //------------------------------------------------------------
 function renderLinks() {
   const linkContainer = document.querySelector(".link-container");
+  linkContainer.innerHTML = "";
 
   //use map() to generate html element for the dashboard
   //add index to deleteLink function call to easily find right link to remove
-  let mapLinks = savedLinks.map((link, index) => {
+  savedLinks.forEach((link, index) => {
+    const linkDiv = document.createElement("div");
+    linkDiv.className = "link-div";
+
+    const deleteBtn = document.createElement("i");
+    deleteBtn.className = "fa-regular fa-trash-can";
+    deleteBtn.addEventListener("click", () => deleteLink(index));
+
     //url to get favicons through google
     const faviconUrl = `https://www.google.com/s2/favicons?domain=${link.linkUrl}&sz=32`;
 
-    return `
-                <div class="link-div">
+    linkDiv.innerHTML = `
                     <div class="favicon-div">
                         <img class="favicon" src="${faviconUrl}">
                         <a class="links" href="${link.linkUrl}" target="_blank">
                             <h3 class="link-h3">${link.linkName}</h3>
                         </a>
                     </div>
-                    <i onclick= "deleteLink(${index})" class="fa-regular fa-trash-can"></i>
-                </div>
             `;
+
+    linkDiv.appendChild(deleteBtn);
+    linkContainer.appendChild(linkDiv);
   });
-  //render html elements from mapLinks and use join to remove ","
-  linkContainer.innerHTML = mapLinks.join("");
 }
 
 //------------------------------------------------------------
